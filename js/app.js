@@ -62,8 +62,7 @@ function ambilData() {
                 ...tersimpan,
                saldo: {
     ...saldoAwal,
-    ...(tersimpan.saldo || {}),
-    dapur: 0
+    ...(tersimpan.saldo || {})
 },
                 transaksi: Array.isArray(tersimpan.transaksi)
                     ? tersimpan.transaksi
