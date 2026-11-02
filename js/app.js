@@ -79,20 +79,25 @@ function ambilData() {
     };
 }
 
-let data = {
-    saldo: { ...saldoAwal },
-    transaksi: []
-};
+let data = ambilData();
 
-simpanData();
+const kunciResetDapur = "resetDapurDanRiwayat_v1";
+
+if (!localStorage.getItem(kunciResetDapur)) {
+    data.saldo.dapur = 0;
+    data.transaksi = [];
+
+    simpanData();
+
+    localStorage.setItem(kunciResetDapur, "selesai");
+}
+
 function simpanData() {
     localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify(data)
     );
 }
-
-
 /* ==========================================
    FORMAT RUPIAH
 ========================================== */
