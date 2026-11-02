@@ -1,0 +1,971 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --cream: #FFFAF1;
+    --white: #FFFFFF;
+    --ink: #41484A;
+    --muted: #92999A;
+    --line: #F0EAE0;
+
+    --yellow: #F8E9B8;
+    --peach: #F7D9C7;
+    --coral: #F1B8AA;
+    --sage: #D7E7D1;
+    --blue: #D5E8F2;
+    --lavender: #E8E0F4;
+
+    --green-text: #588263;
+    --red-text: #C46E68;
+    --orange-text: #B98248;
+    --purple-text: #8874B0;
+    --blue-text: #638FAE;
+
+    --shadow: 0 8px 28px rgba(80, 75, 65, .055);
+    --radius: 22px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 38px 0 32px;
+}
+
+.eyebrow {
+    color: #A18D71;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    margin-bottom: 7px;
+}
+
+.topbar h1 {
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.25;
+    letter-spacing: -1.2px;
+    font-weight: 800;
+}
+
+.subtitle,
+.section-description {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.period {
+    flex-shrink: 0;
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    padding: 11px 17px;
+    border-radius: 30px;
+    color: #77766F;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+}
+
+/* SECTION */
+
+section {
+    margin-bottom: 36px;
+}
+
+.section-heading {
+    margin-bottom: 17px;
+}
+
+.section-heading h2 {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.55px;
+}
+
+/* MAIN WALLETS */
+
+.wallet-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.wallet {
+    min-width: 0;
+    min-height: 180px;
+    padding: 23px;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease;
+}
+
+.wallet:hover,
+.profile-card:hover {
+    transform: translateY(-3px);
+}
+
+.wallet-dapur {
+    background: #DCEAD5;
+}
+
+.wallet-tabungan {
+    background: #DCEBF3;
+}
+
+.wallet-investasi {
+    background: #F8ECC5;
+}
+
+.wallet-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,.55);
+    border-radius: 13px;
+    font-size: 18px;
+}
+
+.wallet-label {
+    margin-top: 13px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #666B66;
+}
+
+.wallet h3 {
+    font-size: clamp(20px, 2.2vw, 25px);
+    line-height: 1.3;
+    font-weight: 800;
+    letter-spacing: -.8px;
+    margin-top: 3px;
+    overflow-wrap: anywhere;
+}
+
+.wallet-note {
+    font-size: 10px;
+    color: #737A73;
+    margin-top: 7px;
+}
+
+/* FAMILY PROFILES */
+
+.profile-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.profile-card {
+    min-width: 0;
+    padding: 21px;
+    border-radius: var(--radius);
+    background: var(--white);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    transition: transform .2s ease;
+}
+
+.profile-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 19px;
+}
+
+.avatar {
+    width: 43px;
+    height: 43px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    font-size: 21px;
+}
+
+.avatar-abi {
+    background: #E1EAF3;
+}
+
+.avatar-umma {
+    background: #F8E1D9;
+}
+
+.avatar-kia {
+    background: #E8E1F4;
+}
+
+.profile-heading h3 {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.profile-heading p {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+/* FOUR FINANCE BUBBLES */
+
+.bubble-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.bubble {
+    min-width: 0;
+    min-height: 83px;
+    padding: 13px 12px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+}
+
+.bubble span {
+    font-size: 10px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #737779;
+}
+
+.bubble strong {
+    font-size: clamp(13px, 1.25vw, 16px);
+    font-weight: 800;
+    letter-spacing: -.4px;
+    line-height: 1.3;
+    color: #454B4D;
+    overflow-wrap: anywhere;
+}
+
+.bubble-jajan {
+    background: #FFF1CE;
+}
+
+.bubble-tabungan {
+    background: #E2EFF6;
+}
+
+.bubble-pinjam {
+    background: #EDE7F7;
+}
+
+.bubble-nombok {
+    background: #FBE8DF;
+}
+
+/* TRANSACTIONS */
+
+.transaction-section {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.transaction-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+#tombol-transaksi {
+    flex-shrink: 0;
+    border: none;
+    border-radius: 30px;
+    background: #EFC0AE;
+    color: #5F4942;
+    padding: 12px 18px;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+#tombol-transaksi:hover {
+    filter: brightness(.97);
+}
+
+.transaction-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 14px;
+}
+
+.transaction-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    color: #777D7E;
+    font-weight: 600;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-income { background: #83B88A; }
+.dot-expense { background: #E58E87; }
+.dot-nombok { background: #E8AC72; }
+.dot-pinjam { background: #A995D0; }
+.dot-transfer { background: #83B7D8; }
+
+#riwayat-transaksi {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#riwayat-transaksi > div:not(.empty-state) {
+    background: #FFFCF7 !important;
+    border: 1px solid var(--line);
+    border-radius: 14px !important;
+    padding: 15px 17px !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#riwayat-transaksi h4 {
+    font-size: 12px;
+}
+
+#riwayat-transaksi p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+#riwayat-transaksi small {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+#riwayat-transaksi strong {
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+.empty-state {
+    padding: 25px 12px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+footer {
+    text-align: center;
+    padding: 22px 0 30px;
+    color: #A2A09A;
+    font-size: 10px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .app {
+        width: min(100% - 36px, 700px);
+    }
+
+    .wallet-container {
+        gap: 12px;
+    }
+
+    .profile-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .bubble {
+        min-height: 78px;
+    }
+}
+
+/* PHONE */
+
+@media (max-width: 560px) {
+    .app {
+        width: calc(100% - 28px);
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 27px 0 24px;
+        gap: 15px;
+    }
+
+    .topbar h1 {
+        font-size: 25px;
+    }
+
+    .period {
+        padding: 8px 13px;
+    }
+
+    section {
+        margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+        font-size: 17px;
+    }
+
+    .wallet-container {
+        grid-template-columns: 1fr;
+        gap: 11px;
+    }
+
+    .wallet {
+        min-height: 150px;
+        padding: 19px;
+    }
+
+    .wallet h3 {
+        font-size: 23px;
+    }
+
+    .profile-container {
+        gap: 13px;
+    }
+
+    .profile-card {
+        padding: 17px;
+    }
+
+    .bubble-grid {
+        gap: 9px;
+    }
+
+    .bubble {
+        min-height: 77px;
+        padding: 11px;
+    }
+
+    .bubble strong {
+        font-size: 14px;
+    }
+
+    .transaction-section {
+        padding: 18px 15px;
+    }
+
+    .transaction-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #tombol-transaksi {
+        width: 100%;
+    }
+
+    .transaction-legend {
+        gap: 10px 13px;
+    }
+}
+/* PRIVACY MODE */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.privacy-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background: white;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.privacy-button:hover {
+    background: #F8F1E6;
+}
+
+.privacy-hidden .wallet h3,
+.privacy-hidden .bubble strong,
+.privacy-hidden #riwayat-transaksi strong {
+    filter: blur(7px);
+    user-select: none;
+}
+
+@media (max-width: 560px) {
+    .header-actions {
+        flex-wrap: wrap;
+    }
+}
+
+/* =================================
+   FORM TRANSAKSI
+================================= */
+
+.transaction-modal {
+    width: min(100%, 520px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -.6px;
+}
+
+.close-modal {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    background: #F2ECE3;
+    color: #777;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #62696A;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 13px;
+    border: 1px solid #EEE8DF;
+    border-radius: 12px;
+    background: #FFFFFF;
+    color: #41484A;
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.form-group textarea {
+    min-height: 85px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #BBD5B7;
+    box-shadow: 0 0 0 3px rgba(187, 213, 183, .2);
+}
+
+.transaction-fields {
+    padding: 15px;
+    margin-bottom: 17px;
+    border-radius: 15px;
+    background: #FAF7F0;
+}
+
+.transaction-fields[hidden] {
+    display: none !important;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 23px;
+}
+
+.modal-actions button {
+    min-height: 43px;
+    padding: 11px 17px;
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+#batal-transaksi {
+    background: #F0ECE5;
+    color: #777;
+}
+
+#simpan-transaksi {
+    background: #D7E7D1;
+    color: #47664B;
+}
+
+#simpan-transaksi:hover {
+    background: #C8DFC1;
+}
+
+@media (max-width: 560px) {
+    .transaction-modal {
+        padding: 20px 16px;
+        max-height: 88vh;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .modal-actions button {
+        width: 100%;
+    }
+}
+
+/* MODAL FORM TRANSAKSI */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    background: rgba(45, 48, 46, .4);
+    overflow-y: auto;
+}
+
+.modal-overlay[hidden] {
+    display: none !important;
+}
+
+/* FORM TRANSAKSI - SOFT SUMMER */
+
+.transaction-modal {
+    background: #FFFAF1;
+    border-radius: 22px;
+    border: 1px solid #F1E8D9;
+    box-shadow: 0 15px 45px rgba(70, 65, 55, .16);
+    color: #514E49;
+}
+
+.transaction-modal h2,
+.transaction-modal h3 {
+    color: #514E49;
+}
+
+.transaction-modal label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #68645C;
+}
+
+.transaction-modal input,
+.transaction-modal select,
+.transaction-modal textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #E6DDCE;
+    border-radius: 11px;
+    background: #FFFFFF;
+    color: #514E49;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.transaction-modal input:focus,
+.transaction-modal select:focus,
+.transaction-modal textarea:focus {
+    border-color: #A9C5A5;
+    box-shadow: 0 0 0 3px rgba(169, 197, 165, .18);
+}
+
+.transaction-modal .form-group {
+    margin-bottom: 16px;
+}
+
+.transaction-modal .modal-header {
+    border-bottom: 1px solid #EEE5D8;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.transaction-modal .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+#batal-transaksi {
+    background: #E8E0F4;
+    color: #514E49;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    cursor: pointer;
+}
+
+#simpan-transaksi {
+    background: #C9DEC5;
+    color: #435442;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+#simpan-transaksi:hover {
+    background: #B8D1B3;
+}
+
+.close-modal {
+    background: #F8D6C0;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+/* TOMBOL HAPUS TRANSAKSI */
+
+.transaction-item {
+    position: relative;
+}
+
+.hapus-transaksi {
+    border: none;
+    background: #F8D6C0;
+    color: #8B5145;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.hapus-transaksi:hover {
+    background: #EFA99C;
+    color: #ffffff;
+}
+/* ==========================================
+   BUBBLE DOMPET TABUNGAN
+========================================== */
+
+.wallet-tabungan .wallet-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.wallet-tabungan .wallet-bubble {
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.wallet-tabungan .wallet-bubble p {
+    margin: 0 0 4px;
+    font-size: 0.75rem;
+    opacity: 0.75;
+}
+
+.wallet-tabungan .wallet-bubble h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+.wallet-tabungan .wallet-bubbles {
+    flex-direction: row;
+}
+
+.wallet-tabungan .wallet-bubble {
+    flex: 1;
+}
+/* ==========================================
+   MOBILE RESPONSIVE IMPROVEMENTS
+========================================== */
+
+@media (max-width: 560px) {
+
+    /* HEADER */
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .privacy-button {
+        flex: 1;
+        justify-content: center;
+    }
+
+
+    /* DOMPET TABUNGAN */
+    .wallet-tabungan .wallet-bubbles {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .wallet-tabungan .wallet-bubble {
+        width: 100%;
+        padding: 11px 13px;
+    }
+
+    .wallet-tabungan .wallet-bubble h3 {
+        font-size: 16px;
+    }
+
+
+    /* KARTU PROFIL */
+    .profile-heading {
+        margin-bottom: 15px;
+    }
+
+    .bubble-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bubble {
+        min-height: 72px;
+    }
+
+    .bubble span {
+        font-size: 9px;
+    }
+
+    .bubble strong {
+        font-size: 13px;
+        letter-spacing: -.3px;
+    }
+
+
+    /* RIWAYAT TRANSAKSI */
+    #riwayat-transaksi > div:not(.empty-state) {
+        padding: 13px 14px !important;
+    }
+
+    .transaction-item {
+        gap: 8px !important;
+    }
+
+    .transaction-amount {
+        font-size: 14px !important;
+    }
+
+    .hapus-transaksi {
+        width: 100%;
+        padding: 9px 12px;
+    }
+
+
+    /* MODAL */
+    .modal-overlay {
+        padding: 10px;
+        place-items: end center;
+    }
+
+    .transaction-modal {
+        width: 100%;
+        max-height: 92vh;
+        border-radius: 22px 22px 14px 14px;
+        padding: 20px 16px;
+    }
+
+    .transaction-fields {
+        padding: 13px;
+    }
+
+    .transaction-modal input,
+    .transaction-modal select,
+    .transaction-modal textarea {
+        font-size: 16px;
+    }
+}
+
+
+/* HP SANGAT KECIL */
+@media (max-width: 380px) {
+
+    .app {
+        width: calc(100% - 20px);
+    }
+
+    .topbar h1 {
+        font-size: 22px;
+    }
+
+    .bubble-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wallet h3 {
+        font-size: 20px;
+    }
+}

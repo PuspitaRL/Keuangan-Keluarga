@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keuangan Keluarga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="app">
+
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">FAMILY FINANCE</p>
+            <h1>Keuangan Keluarga</h1>
+            <p class="subtitle">Kelola keuangan Umma, Abi & Kia dengan lebih teratur.</p>
+        </div>
+        <div class="header-actions">
+    <button id="toggle-saldo" class="privacy-button" type="button">
+        <span id="ikon-mata">◉</span>
+        <span id="teks-privasi">Sembunyikan</span>
+    </button>
+
+    <div class="period">November 2026</div>
+</div>
+    </header>
+
+    <main>
+        <section>
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">OVERVIEW</p>
+                    <h2>Ringkasan Dompet Keluarga</h2>
+                </div>
+            </div>
+
+            <div class="wallet-container">
+                <article class="wallet wallet-dapur">
+                    <div class="wallet-icon">🍚</div>
+                    <p class="wallet-label">Dompet Dapur</p>
+                    <h3 id="saldo-dapur">Rp1.175.750</h3>
+                    <p class="wallet-note">Saldo operasional keluarga</p>
+                </article>
+
+                <article class="wallet wallet-tabungan">
+    <div class="wallet-icon">🏦</div>
+    <p class="wallet-label">Dompet Tabungan</p>
+
+    <div class="wallet-bubbles">
+        <div class="wallet-bubble">
+            <p>Tabungan Umum</p>
+            <h3 id="saldo-tabungan-umum">Rp2.818.477</h3>
+        </div>
+
+        <div class="wallet-bubble">
+            <p>Akumulasi Tabungan</p>
+            <h3 id="saldo-tabungan">Rp4.999.369</h3>
+        </div>
+    </div>
+</article>
+
+                <article class="wallet wallet-investasi">
+                    <div class="wallet-icon">📈</div>
+                    <p class="wallet-label">Dompet Investasi</p>
+                    <h3 id="saldo-investasi">Rp20.000.000</h3>
+                    <p class="wallet-note">Total nilai investasi saat ini</p>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">FAMILY MEMBERS</p>
+                    <h2>Profil Keluarga</h2>
+                    <p class="section-description">Ringkasan keuangan masing-masing anggota keluarga.</p>
+                </div>
+            </div>
+
+            <div class="profile-container">
+
+                <article class="profile-card">
+                    <div class="profile-heading">
+                        <div class="avatar avatar-abi">👨</div>
+                        <div>
+                            <h3>Abi</h3>
+                            <p>Profil keuangan</p>
+                        </div>
+                    </div>
+                    <div class="bubble-grid">
+                        <div class="bubble bubble-jajan">
+                            <span>Uang Jajan</span>
+                            <strong id="jajan-abi">Rp296.903</strong>
+                        </div>
+                        <div class="bubble bubble-tabungan">
+                            <span>Uang Tabungan</span>
+                            <strong id="tabungan-abi">Rp1.130.892</strong>
+                        </div>
+                        <div class="bubble bubble-pinjam">
+                            <span>Pinjam</span>
+                            <strong id="pinjam-abi">Rp0</strong>
+                        </div>
+                        <div class="bubble bubble-nombok">
+                            <span>Nombok</span>
+                            <strong id="nombok-abi">Rp0</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="profile-card">
+                    <div class="profile-heading">
+                        <div class="avatar avatar-umma">👩</div>
+                        <div>
+                            <h3>Umma</h3>
+                            <p>Profil keuangan</p>
+                        </div>
+                    </div>
+                    <div class="bubble-grid">
+                        <div class="bubble bubble-jajan">
+                            <span>Uang Jajan</span>
+                            <strong id="jajan-umma">Rp456.159</strong>
+                        </div>
+                        <div class="bubble bubble-tabungan">
+                            <span>Uang Tabungan</span>
+                            <strong id="tabungan-umma">Rp600.000</strong>
+                        </div>
+                        <div class="bubble bubble-pinjam">
+                            <span>Pinjam</span>
+                            <strong id="pinjam-umma">Rp0</strong>
+                        </div>
+                        <div class="bubble bubble-nombok">
+                            <span>Nombok</span>
+                            <strong id="nombok-umma">Rp0</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="profile-card">
+                    <div class="profile-heading">
+                        <div class="avatar avatar-kia">👧</div>
+                        <div>
+                            <h3>Kia</h3>
+                            <p>Profil keuangan</p>
+                        </div>
+                    </div>
+                    <div class="bubble-grid">
+                        <div class="bubble bubble-jajan">
+                            <span>Uang Jajan</span>
+                            <strong id="jajan-kia">Rp100.000</strong>
+                        </div>
+                        <div class="bubble bubble-tabungan">
+                            <span>Uang Tabungan</span>
+                            <strong id="tabungan-kia">Rp450.000</strong>
+                        </div>
+                        <div class="bubble bubble-pinjam">
+                            <span>Pinjam</span>
+                            <strong id="pinjam-kia">Rp0</strong>
+                        </div>
+                        <div class="bubble bubble-nombok">
+                            <span>Nombok</span>
+                            <strong id="nombok-kia">Rp0</strong>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="transaction-section">
+            <div class="section-heading transaction-heading">
+                <div>
+                    <p class="eyebrow">ACTIVITY</p>
+                    <h2>Riwayat Transaksi</h2>
+                    <p class="section-description">Pantau setiap pemasukan dan pengeluaran keluarga.</p>
+                </div>
+                <button id="tombol-transaksi">+ Catat Transaksi</button>
+            </div>
+
+            <div class="transaction-legend">
+                <span><i class="dot dot-income"></i>Pemasukan</span>
+                <span><i class="dot dot-expense"></i>Pengeluaran</span>
+                <span><i class="dot dot-nombok"></i>Nombok</span>
+                <span><i class="dot dot-pinjam"></i>Pinjam</span>
+                <span><i class="dot dot-transfer"></i>Transfer</span>
+            </div>
+
+            <div id="riwayat-transaksi">
+                <div class="empty-state">Belum ada transaksi yang ditampilkan.</div>
+            </div>
+        </section>
+    </main>
+
+<!-- FORM TRANSAKSI -->
+<div class="modal-overlay" id="modal-transaksi" hidden>
+    <div class="modal-card transaction-modal">
+
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">NEW TRANSACTION</p>
+                <h2>Catat Transaksi</h2>
+                <p class="modal-description">
+                    Catat setiap aktivitas keuangan keluarga.
+                </p>
+            </div>
+            <button type="button" id="tutup-transaksi" class="close-modal">×</button>
+        </div>
+
+        <form id="form-transaksi">
+
+            <div class="form-group">
+                <label for="jenis-transaksi">Jenis Transaksi</label>
+                <select id="jenis-transaksi" required>
+                    <option value="Pelunasan">Pelunasan</option>
+                    <option value="Pemasukan">Pemasukan</option>
+                    <option value="Pengeluaran">Pengeluaran</option>
+                    <option value="Transfer">Transfer</option>
+                    <option value="Nombok">Nombok</option>
+                    <option value="Pinjam">Pinjam</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tanggal-transaksi">Tanggal</label>
+                <input type="date" id="tanggal-transaksi" required>
+            </div>
+
+            
+<!-- PEMASUKAN -->
+<div id="field-pemasukan" class="transaction-fields">
+
+    <div class="form-group">
+        <label for="sumber-pemasukan">Sumber Dana</label>
+        <select id="sumber-pemasukan" required>
+            <option value="">Pilih sumber dana</option>
+            <option value="Gaji Pokok">Gaji Pokok</option>
+            <option value="Penghasilan Tambahan">Penghasilan Tambahan</option>
+            <option value="Lainnya">Lainnya</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="dompet-masuk">Masuk ke Dompet</label>
+        <select id="dompet-masuk" required>
+            <option value="">Pilih dompet tujuan</option>
+            <option value="dapur">Dompet Dapur</option>
+            <option value="tabunganUmum">Tabungan Umum</option>
+            <option value="tabunganAbi">Tabungan Abi</option>
+            <option value="tabunganUmma">Tabungan Umma</option>
+            <option value="tabunganKia">Tabungan Kia</option>
+            <option value="investasi">Dompet Investasi</option>
+            <option value="jajanAbi">Jajan Abi</option>
+            <option value="jajanUmma">Jajan Umma</option>
+            <option value="jajanKia">Jajan Kia</option>
+        </select>
+    </div>
+
+</div>
+
+
+            
+<!-- PENGELUARAN -->
+<div id="field-pengeluaran" class="transaction-fields" hidden>
+
+    <div class="form-group">
+        <label for="dompet-pengeluaran">Sumber Dana</label>
+        <select id="dompet-pengeluaran" required>
+            <option value="">Pilih dompet</option>
+            <option value="dapur">Dompet Dapur</option>
+            <option value="tabunganUmum">Tabungan Umum</option>
+            <option value="tabunganAbi">Tabungan Abi</option>
+            <option value="tabunganUmma">Tabungan Umma</option>
+            <option value="tabunganKia">Tabungan Kia</option>
+            <option value="investasi">Dompet Investasi</option>
+            <option value="jajanAbi">Jajan Abi</option>
+            <option value="jajanUmma">Jajan Umma</option>
+            <option value="jajanKia">Jajan Kia</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="kategori-pengeluaran">Kategori Pengeluaran</label>
+        <select id="kategori-pengeluaran" required>
+            <option value="">Pilih kategori</option>
+            <option value="Dapur">Kebutuhan Dapur</option>
+            <option value="Tagihan">Tagihan Bulanan</option>
+            <option value="Pendidikan">Pendidikan</option>
+            <option value="Kesehatan">Kesehatan</option>
+            <option value="Transportasi">Transportasi</option>
+            <option value="Jajan">Jajan</option>
+            <option value="Belanja">Belanja</option>
+            <option value="Sosial">Sosial / Sedekah</option>
+            <option value="Lainnya">Lainnya</option>
+        </select>
+    </div>
+
+</div>
+
+
+            
+<!-- TRANSFER -->
+<div id="field-transfer" class="transaction-fields" hidden>
+
+    <div class="form-group">
+        <label for="dompet-asal">Transfer dari</label>
+        <select id="dompet-asal" required>
+            <option value="">Pilih dompet asal</option>
+            <option value="dapur">Dompet Dapur</option>
+            <option value="tabunganUmum">Tabungan Umum</option>
+            <option value="tabunganAbi">Tabungan Abi</option>
+            <option value="tabunganUmma">Tabungan Umma</option>
+            <option value="tabunganKia">Tabungan Kia</option>
+            <option value="investasi">Dompet Investasi</option>
+            <option value="jajanAbi">Jajan Abi</option>
+            <option value="jajanUmma">Jajan Umma</option>
+            <option value="jajanKia">Jajan Kia</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="dompet-tujuan">Transfer ke</label>
+        <select id="dompet-tujuan" required>
+            <option value="">Pilih dompet tujuan</option>
+            <option value="dapur">Dompet Dapur</option>
+            <option value="tabunganUmum">Tabungan Umum</option>
+            <option value="tabunganAbi">Tabungan Abi</option>
+            <option value="tabunganUmma">Tabungan Umma</option>
+            <option value="tabunganKia">Tabungan Kia</option>
+            <option value="investasi">Dompet Investasi</option>
+            <option value="jajanAbi">Jajan Abi</option>
+            <option value="jajanUmma">Jajan Umma</option>
+            <option value="jajanKia">Jajan Kia</option>
+        </select>
+    </div>
+
+</div>
+
+
+            
+<!-- NOMBOK -->
+<div id="field-nombok" class="transaction-fields" hidden>
+
+    <div class="form-group">
+        <label for="dompet-nombok">Dana yang digunakan</label>
+        <select id="dompet-nombok" required>
+            <option value="">Pilih dompet pribadi</option>
+            <option value="jajanAbi">Jajan Abi</option>
+            <option value="tabunganAbi">Tabungan Abi</option>
+            <option value="jajanUmma">Jajan Umma</option>
+            <option value="tabunganUmma">Tabungan Umma</option>
+            <option value="jajanKia">Jajan Kia</option>
+            <option value="tabunganKia">Tabungan Kia</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="pihak-nombok">Dana ini digunakan untuk siapa?</label>
+        <select id="pihak-nombok" required>
+            <option value="">Pilih pihak terkait</option>
+            <option value="dapur">Kebutuhan Rumah Tangga</option>
+            <option value="abi">Abi</option>
+            <option value="umma">Umma</option>
+            <option value="kia">Kia</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="kategori-nombok">Kategori Pengeluaran</label>
+        <select id="kategori-nombok" required>
+            <option value="">Pilih kategori</option>
+            <option value="Dapur">Kebutuhan Dapur</option>
+            <option value="Tagihan">Tagihan Bulanan</option>
+            <option value="Pendidikan">Pendidikan</option>
+            <option value="Kesehatan">Kesehatan</option>
+            <option value="Transportasi">Transportasi</option>
+            <option value="Belanja">Belanja</option>
+            <option value="Sosial">Sosial / Sedekah</option>
+            <option value="Lainnya">Lainnya</option>
+        </select>
+    </div>
+
+</div>
+
+
+           
+<!-- PINJAM -->
+<div id="field-pinjam" class="transaction-fields" hidden>
+
+    <div class="form-group">
+        <label for="dompet-pinjam">Dana yang dipinjamkan dari</label>
+        <select id="dompet-pinjam" required>
+            <option value="">Pilih dompet sumber</option>
+            <option value="dapur">Dompet Dapur</option>
+            <option value="tabunganUmum">Tabungan Umum</option>
+            <option value="tabunganAbi">Tabungan Abi</option>
+            <option value="tabunganUmma">Tabungan Umma</option>
+            <option value="tabunganKia">Tabungan Kia</option>
+            <option value="investasi">Dompet Investasi</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="pihak-pinjam">Siapa yang meminjam?</label>
+        <select id="pihak-pinjam" required>
+            <option value="">Pilih peminjam</option>
+            <option value="abi">Abi</option>
+            <option value="umma">Umma</option>
+            <option value="kia">Kia</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="kategori-pinjam">Keperluan pinjaman</label>
+        <select id="kategori-pinjam" required>
+            <option value="">Pilih keperluan</option>
+            <option value="Dapur">Kebutuhan Dapur</option>
+            <option value="Pendidikan">Pendidikan</option>
+            <option value="Kesehatan">Kesehatan</option>
+            <option value="Transportasi">Transportasi</option>
+            <option value="Belanja">Belanja</option>
+            <option value="Lainnya">Lainnya</option>
+        </select>
+    </div>
+
+</div>
+
+<!-- PELUNASAN -->
+<div id="field-pelunasan" class="transaction-fields" hidden>
+
+    <div class="form-group">
+        <label for="jenis-pelunasan">Jenis kewajiban</label>
+        <select id="jenis-pelunasan" required>
+            <option value="">Pilih jenis kewajiban</option>
+            <option value="Nombok">Pengembalian Nombok</option>
+            <option value="Pinjam">Pengembalian Pinjaman</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="transaksi-dilunasi">Kewajiban yang dilunasi</label>
+        <select id="transaksi-dilunasi" required>
+            <option value="">Pilih kewajiban</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="dompet-pelunasan">Dibayar dari dompet</label>
+        <select id="dompet-pelunasan" required>
+            <option value="">Pilih dompet pembayaran</option>
+            <option value="dapur">Dompet Dapur</option>
+            <option value="tabunganUmum">Tabungan Umum</option>
+            <option value="tabunganAbi">Tabungan Abi</option>
+            <option value="tabunganUmma">Tabungan Umma</option>
+            <option value="tabunganKia">Tabungan Kia</option>
+            <option value="investasi">Dompet Investasi</option>
+            <option value="jajanAbi">Jajan Abi</option>
+            <option value="jajanUmma">Jajan Umma</option>
+            <option value="jajanKia">Jajan Kia</option>
+        </select>
+    </div>
+
+</div>
+
+            <!-- NOMINAL DAN KETERANGAN -->
+            <div class="form-group">
+                <label for="nominal-transaksi">Nominal (Rp)</label>
+                <input type="number" id="nominal-transaksi"
+                    min="1" step="1" placeholder="Contoh: 100000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="keterangan-transaksi">Keterangan</label>
+                <textarea id="keterangan-transaksi"
+                    rows="3" placeholder="Tambahkan catatan transaksi..."></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" id="batal-transaksi">Batal</button>
+                <button type="submit" id="simpan-transaksi">Simpan Transaksi</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+    <footer>Keuangan Keluarga · Dikelola bersama ❤️</footer>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
