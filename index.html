@@ -322,21 +322,30 @@
     </div>
 
     <div class="form-group">
-        <label for="dompet-tujuan">Transfer ke</label>
-        <select id="dompet-tujuan" required>
-            <option value="">Pilih dompet tujuan</option>
-            <option value="dapur">Dompet Dapur</option>
-            <option value="tabunganUmum">Tabungan Umum</option>
-            <option value="tabunganAbi">Tabungan Abi</option>
-            <option value="tabunganUmma">Tabungan Umma</option>
-            <option value="tabunganKia">Tabungan Kia</option>
-            <option value="investasi">Dompet Investasi</option>
-            <option value="jajanAbi">Jajan Abi</option>
-            <option value="jajanUmma">Jajan Umma</option>
-            <option value="jajanKia">Jajan Kia</option>
-        </select>
-    </div>
+    <label for="dompet-tujuan">Transfer ke</label>
+    <select id="dompet-tujuan" required>
+        <option value="">Pilih dompet tujuan</option>
+        <option value="dapur">Dompet Dapur</option>
+        <option value="tabunganUmum">Tabungan Umum</option>
+        <option value="tabunganAbi">Tabungan Abi</option>
+        <option value="tabunganUmma">Tabungan Umma</option>
+        <option value="tabunganKia">Tabungan Kia</option>
+        <option value="investasi">Dompet Investasi</option>
+        <option value="jajanAbi">Jajan Abi</option>
+        <option value="jajanUmma">Jajan Umma</option>
+        <option value="jajanKia">Jajan Kia</option>
+        <option value="lainnya">Lainnya (orang lain)</option>
+    </select>
+</div>
 
+<div class="form-group" id="field-penerima-lainnya" hidden>
+    <label for="nama-penerima-transfer">Nama penerima</label>
+    <input
+        type="text"
+        id="nama-penerima-transfer"
+        placeholder="Contoh: Ibu, Saudara, atau lainnya"
+    >
+</div>
 </div>
 
 
