@@ -92,6 +92,9 @@ if (!localStorage.getItem(kunciKoreksiSaldo)) {
 
     localStorage.setItem(kunciKoreksiSaldo, "selesai");
 }
+function simpanData() {
+    localStorage.setItem(
+        STORAGE_KEY
 /* ==========================================
    FORMAT RUPIAH
 ========================================== */
