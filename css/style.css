@@ -355,15 +355,41 @@ section {
     gap: 10px;
 }
 
-#riwayat-transaksi > div:not(.empty-state) {
-    background: #FFFCF7 !important;
+/* WARNA RIWAYAT TRANSAKSI */
+
+#riwayat-transaksi > .transaction-item {
+    background: #FFFCF7;
     border: 1px solid var(--line);
-    border-radius: 14px !important;
-    padding: 15px 17px !important;
-    margin: 0 !important;
+    border-radius: 14px;
+    padding: 15px 17px;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
+}
+
+#riwayat-transaksi > .transaction-item.warna-pemasukan {
+    background: #EAF3E7;
+}
+
+#riwayat-transaksi > .transaction-item.warna-pengeluaran {
+    background: #FBE9E4;
+}
+
+#riwayat-transaksi > .transaction-item.warna-transfer {
+    background: #E7F0F7;
+}
+
+#riwayat-transaksi > .transaction-item.warna-nombok {
+    background: #FFF1D8;
+}
+
+#riwayat-transaksi > .transaction-item.warna-pinjam {
+    background: #EEE9F7;
+}
+
+#riwayat-transaksi > .transaction-item.warna-pelunasan {
+    background: #E5F0E4;
 }
 
 #riwayat-transaksi h4 {
@@ -907,9 +933,41 @@ footer {
 
 
     /* RIWAYAT TRANSAKSI */
-    #riwayat-transaksi > div:not(.empty-state) {
-        padding: 13px 14px !important;
-    }
+    /* WARNA RIWAYAT TRANSAKSI */
+
+#riwayat-transaksi > .transaction-item {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 15px 17px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.transaction-item.warna-pemasukan {
+    background: #EAF3E7;
+}
+
+.transaction-item.warna-pengeluaran {
+    background: #FBE9E4;
+}
+
+.transaction-item.warna-transfer {
+    background: #E7F0F7;
+}
+
+.transaction-item.warna-nombok {
+    background: #FFF1D8;
+}
+
+.transaction-item.warna-pinjam {
+    background: #EEE9F7;
+}
+
+.transaction-item.warna-pelunasan {
+    background: #E5F0E4;
+}
 
     .transaction-item {
         gap: 8px !important;
