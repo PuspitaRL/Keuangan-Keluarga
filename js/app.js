@@ -7,7 +7,7 @@
 const STORAGE_KEY = "keuanganKeluarga";
 
 const saldoAwal = {
-    dapur: 3200000,
+    dapur: 0,
     tabunganUmum: 2818477,
     tabunganAbi: 1130892,
     tabunganUmma: 600000,
@@ -220,9 +220,14 @@ function tampilkanTransaksi() {
         }
 
         if (item.jenis === "Transfer") {
-            detail = `${ambilNamaDompet(item.dari)} → ${ambilNamaDompet(item.ke)}`;
-            tanda = "";
-        }
+    if (item.ke === "lainnya") {
+        detail = `${ambilNamaDompet(item.dari)} → ${item.namaPenerima || "Lainnya"}`;
+        tanda = "−";
+    } else {
+        detail = `${ambilNamaDompet(item.dari)} → ${ambilNamaDompet(item.ke)}`;
+        tanda = "";
+    }
+}
 
         if (item.jenis === "Nombok") {
             detail = `${ambilNamaDompet(item.dari)} untuk ${namaOrang[item.pihakTerkait] || item.pihakTerkait}`;
@@ -238,7 +243,7 @@ function tampilkanTransaksi() {
             tanda = "";
         }
        return `
-    <div class="transaction-item">
+    <div class="transaction-item warna-${item.jenis.toLowerCase()}">
         <div class="transaction-info">
             <strong>${aman(keteranganJenis)}</strong>
             <span>${aman(detail)}</span>
@@ -308,9 +313,12 @@ function hapusTransaksi(id) {
 
     // TRANSFER: kembalikan saldo ke dompet asal
     else if (item.jenis === "Transfer") {
-        tambahPerubahan(item.dari, item.nominal);
+    tambahPerubahan(item.dari, item.nominal);
+
+    if (item.ke !== "lainnya") {
         tambahPerubahan(item.ke, -item.nominal);
     }
+}
 
     // NOMBOK: kembalikan uang ke dompet pemilik
     else if (item.jenis === "Nombok") {
@@ -584,7 +592,20 @@ tombolTutup.addEventListener("click", tutupFormTransaksi);
 tombolBatal.addEventListener("click", tutupFormTransaksi);
 
 jenisTransaksi.addEventListener("change", aturFieldTransaksi);
+const dompetTujuan = document.getElementById("dompet-tujuan");
+const fieldPenerimaLainnya = document.getElementById("field-penerima-lainnya");
+const namaPenerimaTransfer = document.getElementById("nama-penerima-transfer");
 
+dompetTujuan.addEventListener("change", function () {
+    const pilihLainnya = dompetTujuan.value === "lainnya";
+
+    fieldPenerimaLainnya.hidden = !pilihLainnya;
+    namaPenerimaTransfer.required = pilihLainnya;
+
+    if (!pilihLainnya) {
+        namaPenerimaTransfer.value = "";
+    }
+});
 modalTransaksi.addEventListener("click", function(event) {
     if (event.target === modalTransaksi) {
         tutupFormTransaksi();
@@ -660,30 +681,43 @@ function prosesTransaksi(event) {
         transaksi.dari = dari;
         transaksi.kategori = kategori;
     }
+/* TRANSFER */
+else if (jenis === "Transfer") {
+    const dari = document.getElementById("dompet-asal").value;
+    const ke = document.getElementById("dompet-tujuan").value;
 
-    /* TRANSFER */
-    else if (jenis === "Transfer") {
-        const dari = document.getElementById("dompet-asal").value;
-        const ke = document.getElementById("dompet-tujuan").value;
+    const namaPenerima = namaPenerimaTransfer.value.trim();
 
-        if (!dari || !ke) {
-            alert("Pilih dompet asal dan tujuan.");
-            return;
-        }
-
-        if (dari === ke) {
-            alert("Dompet asal dan tujuan tidak boleh sama.");
-            return;
-        }
-
-        if (!cekSaldo(dari)) return;
-
-        saldo[dari] -= nominal;
-        saldo[ke] += nominal;
-
-        transaksi.dari = dari;
-        transaksi.ke = ke;
+    if (!dari || !ke) {
+        alert("Pilih dompet asal dan tujuan.");
+        return;
     }
+
+    if (ke === dari) {
+        alert("Dompet asal dan tujuan tidak boleh sama.");
+        return;
+    }
+
+    if (ke === "lainnya" && !namaPenerima) {
+        alert("Masukkan nama penerima transfer.");
+        return;
+    }
+
+    if (!cekSaldo(dari)) return;
+
+    saldo[dari] -= nominal;
+
+    if (ke !== "lainnya") {
+        saldo[ke] += nominal;
+    }
+
+    transaksi.dari = dari;
+    transaksi.ke = ke;
+
+    if (ke === "lainnya") {
+        transaksi.namaPenerima = namaPenerima;
+    }
+}
 
     /* NOMBOK */
     else if (jenis === "Nombok") {
