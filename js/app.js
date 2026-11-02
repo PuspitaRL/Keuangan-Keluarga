@@ -60,10 +60,11 @@ function ambilData() {
         if (tersimpan) {
             return {
                 ...tersimpan,
-                saldo: {
-                    ...saldoAwal,
-                    ...(tersimpan.saldo || {})
-                },
+               saldo: {
+    ...saldoAwal,
+    ...(tersimpan.saldo || {}),
+    dapur: 0
+},
                 transaksi: Array.isArray(tersimpan.transaksi)
                     ? tersimpan.transaksi
                     : []
