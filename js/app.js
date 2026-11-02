@@ -79,15 +79,12 @@ function ambilData() {
     };
 }
 
-let data = ambilData();
-// PEMULIHAN SALDO DAPUR SATU KALI
-const kunciPemulihan = "pemulihanSaldoDapurSelesai";
+let data = {
+    saldo: { ...saldoAwal },
+    transaksi: []
+};
 
-if (!localStorage.getItem(kunciPemulihan)) {
-    data.saldo.dapur = 1175750;
-    simpanData();
-    localStorage.setItem(kunciPemulihan, "true");
-}
+simpanData();
 function simpanData() {
     localStorage.setItem(
         STORAGE_KEY,
