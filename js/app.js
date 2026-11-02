@@ -81,22 +81,16 @@ function ambilData() {
 
 let data = ambilData();
 
-const kunciResetDapur = "resetDapurDanRiwayat_v1";
+const kunciKoreksiSaldo = "koreksiSaldo_v2";
 
-if (!localStorage.getItem(kunciResetDapur)) {
-    data.saldo.dapur = 0;
-    data.transaksi = [];
+if (!localStorage.getItem(kunciKoreksiSaldo)) {
+    // Koreksi saldo yang masih membawa data sebelum reset
+    data.saldo.jajanUmma -= 400000;
+    data.saldo.tabunganUmum -= 1000000;
 
     simpanData();
 
-    localStorage.setItem(kunciResetDapur, "selesai");
-}
-
-function simpanData() {
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
-    );
+    localStorage.setItem(kunciKoreksiSaldo, "selesai");
 }
 /* ==========================================
    FORMAT RUPIAH
