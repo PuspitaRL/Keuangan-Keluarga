@@ -53,19 +53,18 @@ const namaOrang = {
 
 function ambilData() {
     try {
-        const tersimpan = JSON.parse(
-            localStorage.getItem(STORAGE_KEY)
-        );
+        const tersimpan = localStorage.getItem(STORAGE_KEY);
 
         if (tersimpan) {
+            const dataTersimpan = JSON.parse(tersimpan);
+
             return {
-                ...tersimpan,
-               saldo: {
-    ...saldoAwal,
-    ...(tersimpan.saldo || {})
-},
-                transaksi: Array.isArray(tersimpan.transaksi)
-                    ? tersimpan.transaksi
+                saldo: {
+                    ...saldoAwal,
+                    ...(dataTersimpan.saldo || {})
+                },
+                transaksi: Array.isArray(dataTersimpan.transaksi)
+                    ? dataTersimpan.transaksi
                     : []
             };
         }
@@ -79,26 +78,14 @@ function ambilData() {
     };
 }
 
-let data = {
-    saldo: { ...saldoAwal },
-    transaksi: []
-};
+let data = ambilData();
 
-simpanData();
-const kunciKoreksiSaldo = "koreksiSaldo_v2";
-
-if (!localStorage.getItem(kunciKoreksiSaldo)) {
-    // Koreksi saldo yang masih membawa data sebelum reset
-    data.saldo.jajanUmma -= 400000;
-    data.saldo.tabunganUmum -= 1000000;
-
-    simpanData();
-
-    localStorage.setItem(kunciKoreksiSaldo, "selesai");
-}
 function simpanData() {
     localStorage.setItem(
-        STORAGE_KEY
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+}
 /* ==========================================
    FORMAT RUPIAH
 ========================================== */
