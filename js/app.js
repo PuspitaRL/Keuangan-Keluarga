@@ -20,7 +20,7 @@ const saldoAwal = {
 
     jajanAbi: 296903,
     jajanUmma: 56159,
-    jajanKia: 100000,
+    jajanKia: 0,
 
     pinjamAbi: 0,
     pinjamUmma: 0,
