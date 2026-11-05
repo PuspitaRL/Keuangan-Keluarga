@@ -78,8 +78,25 @@ function ambilData() {
     };
 }
 
-let data = ambilData();
+const kunciResetFinal = "resetAwalKeuangan_v3";
 
+let data;
+
+if (!localStorage.getItem(kunciResetFinal)) {
+    data = {
+        saldo: { ...saldoAwal },
+        transaksi: []
+    };
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+    localStorage.setItem(kunciResetFinal, "selesai");
+} else {
+    data = ambilData();
+}
 function simpanData() {
     localStorage.setItem(
         STORAGE_KEY,
