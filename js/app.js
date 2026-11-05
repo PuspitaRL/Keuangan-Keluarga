@@ -79,8 +79,12 @@ function ambilData() {
     };
 }
 
-let data = ambilData();
+let data = {
+    saldo: { ...saldoAwal },
+    transaksi: []
+};
 
+simpanData();
 const kunciKoreksiSaldo = "koreksiSaldo_v2";
 
 if (!localStorage.getItem(kunciKoreksiSaldo)) {
