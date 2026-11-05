@@ -5,6 +5,10 @@
 ========================================== */
 
 const STORAGE_KEY = "keuanganKeluarga";
+const SUPABASE_URL = "https://vnfxxrmpqxdrmhgwffci.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_yg4dUr8Gvz-HztsEPmquEw_OChgf7Fr";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+let penggunaAktif = null;
 
 const saldoAwal = {
     dapur: 0,
@@ -97,11 +101,23 @@ if (!localStorage.getItem(kunciResetFinal)) {
 } else {
     data = ambilData();
 }
-function simpanData() {
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
-    );
+async function simpanData() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+    if (!penggunaAktif) return;
+
+    const { error } = await supabaseClient
+        .from("keuangan_state")
+        .upsert({
+            user_id: penggunaAktif.id,
+            data: data,
+            updated_at: new Date().toISOString()
+        }, { onConflict: "user_id" });
+
+    if (error) {
+        console.error("Gagal menyinkronkan data:", error);
+        alert("Transaksi tersimpan di perangkat ini, tetapi gagal disinkronkan. Periksa koneksi internet lalu coba lagi.");
+    }
 }
 /* ==========================================
    FORMAT RUPIAH
@@ -913,5 +929,100 @@ if (tombolPrivasi) {
    JALANKAN APLIKASI
 ========================================== */
 
+// ==========================================
+// LOGIN DAN SINKRONISASI SUPABASE
+// ==========================================
+const authPanel = document.getElementById("auth-panel");
+const mainApp = document.getElementById("main-app");
+const authForm = document.getElementById("auth-form");
+const authEmail = document.getElementById("auth-email");
+const authPassword = document.getElementById("auth-password");
+const authSubmit = document.getElementById("auth-submit");
+const authToggle = document.getElementById("auth-toggle");
+const authMessage = document.getElementById("auth-message");
+let modeDaftar = false;
+
+if (authToggle) {
+    authToggle.addEventListener("click", () => {
+        modeDaftar = !modeDaftar;
+        authSubmit.textContent = modeDaftar ? "Daftar" : "Masuk";
+        authToggle.textContent = modeDaftar ? "Sudah punya akun? Masuk" : "Belum punya akun? Daftar";
+        authMessage.textContent = "";
+    });
+}
+
+async function bukaAplikasiDenganAkun(user) {
+    penggunaAktif = user;
+    authMessage.textContent = "Mengambil data keuangan...";
+
+    const { data: hasil, error } = await supabaseClient
+        .from("keuangan_state")
+        .select("data")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+    if (error) {
+        authMessage.textContent = "Gagal mengambil data: " + error.message;
+        penggunaAktif = null;
+        return;
+    }
+
+    if (hasil && hasil.data) {
+        data = {
+            saldo: { ...saldoAwal, ...(hasil.data.saldo || {}) },
+            transaksi: Array.isArray(hasil.data.transaksi) ? hasil.data.transaksi : []
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } else {
+        // Migrasi pertama: data lokal perangkat pertama diunggah ke cloud.
+        data = ambilData();
+        const { error: simpanError } = await supabaseClient
+            .from("keuangan_state")
+            .insert({ user_id: user.id, data: data });
+        if (simpanError) {
+            authMessage.textContent = "Gagal memindahkan data perangkat ini: " + simpanError.message;
+            penggunaAktif = null;
+            return;
+        }
+    }
+
+    authPanel.hidden = true;
+    mainApp.hidden = false;
+    aturFieldTransaksi();
+    tampilkanSemua();
+}
+
+authForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    authSubmit.disabled = true;
+    authMessage.textContent = modeDaftar ? "Membuat akun..." : "Memproses login...";
+    const email = authEmail.value.trim();
+    const password = authPassword.value;
+
+    let hasil;
+    if (modeDaftar) {
+        hasil = await supabaseClient.auth.signUp({ email, password });
+        if (!hasil.error && !hasil.data.session) {
+            authMessage.textContent = "Pendaftaran berhasil. Cek email untuk verifikasi, lalu kembali dan masuk.";
+        }
+    } else {
+        hasil = await supabaseClient.auth.signInWithPassword({ email, password });
+    }
+
+    if (hasil.error) {
+        authMessage.textContent = hasil.error.message;
+    } else if (hasil.data.session) {
+        await bukaAplikasiDenganAkun(hasil.data.user);
+    }
+    authSubmit.disabled = false;
+});
+
+async function mulaiAplikasi() {
+    const { data: sesi } = await supabaseClient.auth.getSession();
+    if (sesi.session) {
+        await bukaAplikasiDenganAkun(sesi.session.user);
+    }
+}
+
 aturFieldTransaksi();
-tampilkanSemua();
+mulaiAplikasi();
